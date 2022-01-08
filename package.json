@@ -2,7 +2,7 @@
     "$schema": "https://www.raycast.com/schemas/extension.json",
     "name": "ploi-raycast",
     "title": "Ploi",
-    "description": "View and manage your Ploi servers",
+    "description": "View and manage your ploi.io servers and sites",
     "icon": "ploi-icon.png",
     "author": "Ploi",
     "license": "MIT",

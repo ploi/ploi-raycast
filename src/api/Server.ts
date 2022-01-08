@@ -51,7 +51,7 @@ export const Server = {
             const axiosError = (error as AxiosError).response;
 
             if (axiosError && axiosError.status === 422 && axiosError.data && axiosError.data.errors[0]) {
-                await showToast(ToastStyle.Failure, axiosError.data.errors[0]);
+                await showToast(ToastStyle.Failure, 'Error', axiosError.data.errors[0]);
                 return;
             }
 
@@ -76,7 +76,7 @@ const getServers = async () => {
     } catch (error) {
         const axiosError = (error as AxiosError).response;
 
-        if (axiosError && axiosError.status === 422 && axiosError.data && axiosError.data.errors[0]) {
+        if (axiosError?.status === 422 && axiosError?.data && axiosError?.data.errors[0]) {
             await showToast(ToastStyle.Failure, 'Wrong API key used', 'Please remove your API key in the preferences and enter a valid one');
             return;
         }

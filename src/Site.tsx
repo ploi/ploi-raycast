@@ -11,6 +11,7 @@ import {useState} from "react";
 import {Site} from "./api/Site";
 import {ServerInterface, ServerCommands} from "./Server";
 import {siteStatusState, useIsMounted, usePolling} from "./helpers";
+import {PLOI_PANEL_URL} from "./config";
 
 export const SitesList = ({server, sites: sitesArray}: { server: ServerInterface; sites: ISite[] }) => {
     const [sites, setSites] = useState<ISite[]>(sitesArray);
@@ -19,7 +20,7 @@ export const SitesList = ({server, sites: sitesArray}: { server: ServerInterface
         Site.getAll(server).then(async (sites: ISite[] | undefined) => {
             if (isMounted.current && sites?.length) {
                 setSites(sites);
-                // Add the server list to storage to avoid content flash
+
                 await setLocalStorageItem(`ploi-sites-${server.id}`, JSON.stringify(sites));
             }
         })
@@ -48,7 +49,7 @@ const SiteListItem = ({site, server}: { site: ISite; server: ServerInterface }) 
             actions={
                 <ActionPanel>
                     <ActionPanel.Section>
-                        <PushAction title="Open site info" target={<SitesSingleView site={site} server={server}/>}/>
+                        <PushAction title="Open Site Info" target={<SitesSingleView site={site} server={server}/>}/>
                     </ActionPanel.Section>
                     <ActionPanel.Section title="Site Commands">
                         <SiteCommands site={site} server={server}/>
@@ -73,14 +74,14 @@ export const SitesSingleView = ({site, server}: { site: ISite; server: ServerInt
     );
     return (
         <>
-            <List searchBarPlaceholder="Search sites...">
+            <List searchBarPlaceholder="Search Sites...">
                 <List.Section title={`Site Commands (${current.domain})`}>
                     {site.hasRepository && (
                         <List.Item
                             id="site-deploy"
                             key="site-deploy"
                             title="Deploy"
-                            accessoryTitle="This will run the deploy script for your site"
+                            accessoryTitle="This Will Run The Deploy Script For Your Site"
                             actions={
                                 <ActionPanel>
                                     <ActionPanel.Item
@@ -95,13 +96,13 @@ export const SitesSingleView = ({site, server}: { site: ISite; server: ServerInt
                     <List.Item
                         id="site-flush-fastcgi-cache"
                         key="site-flush-fastcgi-cache"
-                        title="Flush FastCGI cache"
-                        accessoryTitle="This flushes the FastCGI cache"
+                        title="Flush FastCGI Cache"
+                        accessoryTitle="This Flushes The FastCGI Cache"
                         actions={
                             <ActionPanel>
                                 <ActionPanel.Item
                                     icon={Icon.Bubble}
-                                    title="Flush FastCGI cache"
+                                    title="Flush FastCGI Cache"
                                     onAction={() => Site.flushFastCgiCache(current, server)}
                                 />
                             </ActionPanel>
@@ -109,6 +110,18 @@ export const SitesSingleView = ({site, server}: { site: ISite; server: ServerInt
                     />
                 </List.Section>
                 <List.Section title="Site Information">
+                    <List.Item
+                        id="open-in-ploi"
+                        key="open-in-ploi"
+                        title="Open In ploi.io"
+                        icon={Icon.Globe}
+                        accessoryTitle="ploi.io"
+                        actions={
+                            <ActionPanel>
+                                <OpenInBrowserAction url={`${PLOI_PANEL_URL}/servers/${server.id}/sites/${site.id}`}/>
+                            </ActionPanel>
+                        }
+                    />
                     {Object.entries({
                         id: 'Site ID',
                         serverId: 'Server ID',
