@@ -1,6 +1,8 @@
 # Ploi Raycast
 A command center for managing your servers & sites by [Ploi](https://ploi.io/). 
 
+![Banner](banner.png)
+
 ## Usage
 
 You will need a API key from Ploi to use this extension.
