@@ -16,12 +16,12 @@ Make sure to tick the required permissions and copy the token, next you can ente
 - View site details
 - View deployment status
 - Trigger deploy script
-- Restart services (Nginx, MySQL, Supervisor)
+- Restart services (NGINX, MySQL, Supervisor)
 - Restart server
 - Flush FastCGI cache
 - Refresh server OPcache
 
 ## Non-Ploi API Features
-- Check site connectivity
 - Open terminal session
 - Copy IP address
+- Open site or server in ploi.io
