@@ -1,4 +1,4 @@
-import { ServersList } from "./Server";
+import {ServersList} from "./Server";
 import axios from "axios";
 import {PLOI_API_URL} from "./config";
 import {getHeaders} from "./helpers";
@@ -12,6 +12,6 @@ axios.defaults.headers.common['Content-Type'] = headers['Content-Type'];
 axios.defaults.headers.common['Accept'] = headers['Accept'];
 axios.defaults.headers.common['X-Custom-Ploi-Agent'] = headers['X-Custom-Ploi-Agent'];
 
-const Ploi = () => <ServersList />;
+const Ploi = () => <ServersList/>;
 
 export default Ploi;

@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from "react";
 import {API_RATE_LIMIT} from "./config";
 import {ISite} from "./Site";
-import { Icon} from "@raycast/api";
+import {Icon} from "@raycast/api";
 
 export const useIsMounted = () => {
     const isMounted = useRef(false);

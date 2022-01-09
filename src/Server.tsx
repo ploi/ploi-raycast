@@ -21,8 +21,8 @@ export const ServersList = () => {
     const [servers, setServers] = useState<ServerInterface[]>([]);
     const [siteData, setSiteData] = useState<LocalStorageValues>({});
     const isMounted = useIsMounted();
-    
-    const maybeFetchAndCacheSites = async (serverId: string) => {
+
+    const fetchAndCacheSites = async (serverId: string) => {
         const key = `ploi-sites-${serverId.toString()}`;
         // If the sites already exist in the cache, or not found, do nothing
         if (siteData[key] || !isMounted.current) return;
@@ -57,7 +57,7 @@ export const ServersList = () => {
         <List
             isLoading={!servers?.length}
             searchBarPlaceholder="Search Servers..."
-            onSelectionChange={(serverId) => serverId && maybeFetchAndCacheSites(serverId)}
+            onSelectionChange={(serverId) => serverId && fetchAndCacheSites(serverId)}
         >
             {servers.map((server: ServerInterface) => {
                 const key = `ploi-sites-${server.id.toString()}`;
