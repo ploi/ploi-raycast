@@ -68,3 +68,9 @@ $ prettier --write . && prettier --check . && npm run build
 
 - **Website** - https://ploi.io
 - **API Documentation** - https://developers.ploi.io
+
+## Contributors
+
+- [Dennis Smink](https://github.com/Cannonb4ll)
+- Robin Rosier (Initial creator)
+- [Kevin Batdorf](https://github.com/KevinBatdorf) (Inspiration 💙)
