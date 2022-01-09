@@ -43,14 +43,11 @@ $ git clone https://github.com/ploi-deploy/ploi-raycast.git
 $ npm install
 ```
 
-3. Run development or production
+3. Run development
 
 ```
 # Development
 $ npm run dev
-
-# Production
-$ npm i && npm run build -e dist
 ```
 
 ## Production
