@@ -28,3 +28,46 @@ Make sure to tick the required permissions and copy the token, next you can ente
 - Open terminal session
 - Copy IP address
 - Open site or server in ploi.io
+
+## Development
+
+1. Clone repository
+
+```
+$ git clone https://github.com/ploi-deploy/ploi-raycast.git
+```
+
+2. Install dependencies
+
+```
+$ npm install
+```
+
+3. Run development or production
+
+```
+# Development
+$ npm run dev
+
+# Production
+$ npm i && npm run build -e dist
+```
+
+## Production
+
+Making sure production building works and compiles with Raycast:
+
+```
+$ prettier --write .
+$ prettier --check .
+$ npm run build
+
+// Or
+
+$ prettier --write . && prettier --check . && npm run build
+```
+
+## Links
+
+- **Website** - https://ploi.io
+- **API Documentation** - https://developers.ploi.io
