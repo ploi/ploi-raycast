@@ -13,13 +13,7 @@ import { IServer, ServerCommands } from "./Server";
 import { siteStatusState, useIsMounted, usePolling } from "./helpers";
 import { PLOI_PANEL_URL } from "./config";
 
-export const SitesList = ({
-  server,
-  sites: sitesArray,
-}: {
-  server: IServer;
-  sites: ISite[];
-}) => {
+export const SitesList = ({ server, sites: sitesArray }: { server: IServer; sites: ISite[] }) => {
   const [sites, setSites] = useState<ISite[]>(sitesArray);
   const isMounted = useIsMounted();
   usePolling(() =>

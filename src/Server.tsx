@@ -154,7 +154,7 @@ const SingleServerView = ({
         <List.Item
           id="open-in-ploi"
           key="open-in-ploi"
-          title="Open In ploi.io"
+          title="Open in ploi.io"
           icon={Icon.Globe}
           accessoryTitle="ploi.io"
           actions={
@@ -273,7 +273,7 @@ export const ServerCommands = ({ server }: { server: IServer }) => {
         content={server.ipAddress}
       />
       <OpenInBrowserAction
-        title="Open In ploi.io"
+        title="Open in ploi.io"
         url={`${PLOI_PANEL_URL}/servers/${server.id}`}
       />
     </>
