@@ -135,7 +135,7 @@ const SingleServerView = ({
       <List.Section title={`Sites (${server.name})`}>
         <SitesList server={server} sites={sites} />
       </List.Section>
-      <List.Section title="Common Commands">
+      <List.Section title="Server Information">
         <List.Item
           id="open-in-ssh"
           key="open-in-ssh"
@@ -177,6 +177,18 @@ const SingleServerView = ({
                 title="Copy IP Address"
                 content={server.ipAddress}
               />
+            </ActionPanel>
+          }
+        />
+        <List.Item
+          id="server-id"
+          key="server-id"
+          title="Server ID"
+          icon={Icon.Document}
+          accessoryTitle={`${server.id}`}
+          actions={
+            <ActionPanel>
+              <CopyToClipboardAction content={server.id ?? ""} />
             </ActionPanel>
           }
         />
