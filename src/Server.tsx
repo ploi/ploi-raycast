@@ -142,7 +142,7 @@ const SingleServerView = ({
   const sshUser = preferences?.ploi_ssh_user?.value ?? "ploi";
   return (
     <List searchBarPlaceholder="Search Sites...">
-      <List.Section title={`Sites (${server.name})`}>
+      <List.Section title={`Sites on server ${server.name} (${sites.length} site(s))`}>
         <SitesList server={server} sites={sites} />
       </List.Section>
       <List.Section title="Server Information">
