@@ -1,0 +1,23 @@
+on: workflow_dispatch
+jobs:
+  fetch-and-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          repository: 'cannonb4ll/my-test'
+          path: 'extensions/ploi'
+      - name: Clean up files for store
+        run: |
+          rm ./.github/workflows/create-ploi-pull-request.yml
+          rm -rf ./extensions/ploi/.github
+          rm -rf ./extensions/ploi/.git
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: Update Ploi Extension
+          title: Update Ploi Extension
+          body: Latest updates from the Ploi extension
+          branch: update-ploi-extension
+          branch-suffix: random
