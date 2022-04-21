@@ -146,6 +146,21 @@ export const SitesSingleView = ({
               </ActionPanel>
             }
           />
+          <List.Item
+            id="open-in-sftp"
+            key="open-in-sftp"
+            title={`Open SFTP Connection (${site.systemUser})`}
+            icon={Icon.Terminal}
+            accessoryTitle={`sftp://${site.systemUser}@${server.ipAddress}`}
+            actions={
+              <ActionPanel>
+                <OpenInBrowserAction
+                  title={`SFTP As User ${site.systemUser}`}
+                  url={`sftp://${site.systemUser}@${server.ipAddress}`}
+                />
+              </ActionPanel>
+            }
+          />
         </List.Section>
         <List.Section title="Site Information">
           <List.Item
@@ -166,6 +181,7 @@ export const SitesSingleView = ({
             id: "Site ID",
             serverId: "Server ID",
             domain: "Domain",
+            systemUser: "System User",
             webDirectory: "Public Directory",
             projectType: "Project Type",
             zeroDowntimeDeployment: "Zero-downtime Deployments Enabled",

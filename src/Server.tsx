@@ -164,6 +164,21 @@ const SingleServerView = ({
           }
         />
         <List.Item
+          id="open-in-sftp"
+          key="open-in-sftp"
+          title={`Open SFTP Connection (${sshUser})`}
+          icon={Icon.Terminal}
+          accessoryTitle={`sftp://${sshUser}@${server.ipAddress}`}
+          actions={
+            <ActionPanel>
+              <OpenInBrowserAction
+                title={`SFTP As User ${sshUser}`}
+                url={`sftp://${sshUser}@${server.ipAddress}`}
+              />
+            </ActionPanel>
+          }
+        />
+        <List.Item
           id="open-in-ploi"
           key="open-in-ploi"
           title="Open in ploi.io"
