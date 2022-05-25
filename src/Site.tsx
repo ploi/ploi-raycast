@@ -1,12 +1,4 @@
-import {
-  ActionPanel,
-  CopyToClipboardAction,
-  Icon,
-  List,
-  OpenInBrowserAction,
-  PushAction,
-  setLocalStorageItem,
-} from "@raycast/api";
+import { ActionPanel, Icon, List, Action, LocalStorage } from "@raycast/api";
 import { useState } from "react";
 import { Site } from "./api/Site";
 import { IServer, ServerCommands } from "./Server";
@@ -27,7 +19,7 @@ export const SitesList = ({
       if (isMounted.current && sites?.length) {
         setSites(sites);
 
-        await setLocalStorageItem(
+        await LocalStorage.setItem(
           `ploi-sites-${server.id}`,
           JSON.stringify(sites)
         );
@@ -60,7 +52,7 @@ const SiteListItem = ({ site, server }: { site: ISite; server: IServer }) => {
       actions={
         <ActionPanel>
           <ActionPanel.Section>
-            <PushAction
+            <Action.Push
               icon={Icon.Globe}
               title="Open Site Info"
               target={<SitesSingleView site={site} server={server} />}
@@ -139,7 +131,7 @@ export const SitesSingleView = ({
             accessoryTitle={`ssh://${site.systemUser}@${server.ipAddress}`}
             actions={
               <ActionPanel>
-                <OpenInBrowserAction
+                <Action.OpenInBrowser
                   title={`SSH In As User ${site.systemUser}`}
                   url={`ssh://${site.systemUser}@${server.ipAddress}`}
                 />
@@ -154,7 +146,7 @@ export const SitesSingleView = ({
             accessoryTitle={`sftp://${site.systemUser}@${server.ipAddress}`}
             actions={
               <ActionPanel>
-                <OpenInBrowserAction
+                <Action.OpenInBrowser
                   title={`SFTP As User ${site.systemUser}`}
                   url={`sftp://${site.systemUser}@${server.ipAddress}`}
                 />
@@ -171,7 +163,7 @@ export const SitesSingleView = ({
             accessoryTitle="ploi.io"
             actions={
               <ActionPanel>
-                <OpenInBrowserAction
+                <Action.OpenInBrowser
                   url={`${PLOI_PANEL_URL}/servers/${server.id}/sites/${site.id}`}
                 />
               </ActionPanel>
@@ -197,7 +189,7 @@ export const SitesSingleView = ({
                   icon={Icon.Document}
                   actions={
                     <ActionPanel>
-                      <CopyToClipboardAction content={value ?? ""} />
+                      <Action.CopyToClipboard content={value ?? ""} />
                     </ActionPanel>
                   }
                 />
@@ -227,7 +219,7 @@ export const SiteCommands = ({
   return (
     <>
       {url && (
-        <OpenInBrowserAction
+        <Action.OpenInBrowser
           icon={Icon.Globe}
           title={`Open site in browser`}
           url={url.toString()}

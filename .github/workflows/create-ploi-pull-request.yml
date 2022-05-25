@@ -6,8 +6,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          repository: 'cannonb4ll/my-test'
-          path: 'extensions/ploi'
+          repository: "cannonb4ll/my-test"
+          path: "extensions/ploi"
       - name: Clean up files for store
         run: |
           rm ./.github/workflows/create-ploi-pull-request.yml
