@@ -43,12 +43,12 @@ const SiteListItem = ({ site, server }: { site: ISite; server: IServer }) => {
       id={site.id.toString()}
       key={site.id}
       title={site.domain}
-      subtitle={
-        site.phpVersion ? "PHP version: " + String(site.phpVersion) ?? "" : ""
-      }
       icon={stateIcon}
-      accessoryIcon={siteStatusState(site).icon}
-      accessoryTitle={stateText}
+      accessories={[
+        site.lastDeployAt ? { text: "Last deploy: " + site.lastDeployAt } : {},
+        { text: (site.phpVersion ? 'PHP: ' + site.phpVersion : "") },
+        { text: stateText, icon: siteStatusState(site).icon}
+      ]}
       actions={
         <ActionPanel>
           <ActionPanel.Section>
@@ -94,7 +94,9 @@ export const SitesSingleView = ({
               id="site-deploy"
               key="site-deploy"
               title="Deploy"
-              accessoryTitle="This will run the deploy script for your site"
+              accessories={[
+                { text: "This will run the deploy script for your site" }
+              ]}
               icon={Icon.Hammer}
               actions={
                 <ActionPanel>
@@ -111,7 +113,9 @@ export const SitesSingleView = ({
             id="site-flush-fastcgi-cache"
             key="site-flush-fastcgi-cache"
             title="Flush FastCGI Cache"
-            accessoryTitle="This will flush the FastCGI cache"
+            accessories={[
+              { text: "This will flush the FastCGI cache" }
+            ]}
             icon={Icon.ArrowClockwise}
             actions={
               <ActionPanel>
@@ -128,7 +132,9 @@ export const SitesSingleView = ({
             key="open-in-ssh"
             title={`Open SSH Connection (${site.systemUser})`}
             icon={Icon.Terminal}
-            accessoryTitle={`ssh://${site.systemUser}@${server.ipAddress}`}
+            accessories={[
+              { text: `ssh://${site.systemUser}@${server.ipAddress}` }
+            ]}
             actions={
               <ActionPanel>
                 <Action.OpenInBrowser
@@ -143,7 +149,9 @@ export const SitesSingleView = ({
             key="open-in-sftp"
             title={`Open SFTP Connection (${site.systemUser})`}
             icon={Icon.Terminal}
-            accessoryTitle={`sftp://${site.systemUser}@${server.ipAddress}`}
+            accessories={[
+              { text: `sftp://${site.systemUser}@${server.ipAddress}` }
+            ]}
             actions={
               <ActionPanel>
                 <Action.OpenInBrowser
@@ -160,7 +168,9 @@ export const SitesSingleView = ({
             key="open-in-ploi"
             title="Open In ploi.io"
             icon={Icon.Globe}
-            accessoryTitle="ploi.io"
+            accessories={[
+              { text: "ploi.io" }
+            ]}
             actions={
               <ActionPanel>
                 <Action.OpenInBrowser
@@ -185,7 +195,9 @@ export const SitesSingleView = ({
                   id={key}
                   key={key}
                   title={label}
-                  accessoryTitle={value}
+                  accessories={[
+                    { text: value }
+                  ]}
                   icon={Icon.Document}
                   actions={
                     <ActionPanel>
@@ -249,4 +261,5 @@ export interface ISite {
   createdAt: string;
   domain: string;
   systemUser: string;
+  lastDeployAt: string;
 }
