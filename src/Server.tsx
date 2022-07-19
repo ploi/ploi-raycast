@@ -65,7 +65,9 @@ export const ServersList = () => {
       <List>
         <List.Item
           title="There are no results to display."
-          accessoryTitle="If you create your first server in ploi.io, it will show up here."
+          accessories={[
+              { text: "If you create your first server in ploi.io, it will show up here." }
+          ]}
         />
       </List>
     );
@@ -104,7 +106,9 @@ const ServerListItem = ({
           dark: "server-dark.png",
         },
       }}
-      accessoryTitle={server.ipAddress}
+      accessories={[
+          { text: server.ipAddress }
+      ]}
       actions={
         <ActionPanel>
           <ActionPanel.Section>
@@ -156,7 +160,9 @@ const SingleServerView = ({
           key="open-in-ssh"
           title={`Open SSH Connection (${sshUser})`}
           icon={Icon.Terminal}
-          accessoryTitle={`ssh://${sshUser}@${server.ipAddress}`}
+          accessories={[
+              { text: `ssh://${sshUser}@${server.ipAddress}` }
+          ]}
           actions={
             <ActionPanel>
               <Action.OpenInBrowser
@@ -171,7 +177,9 @@ const SingleServerView = ({
           key="open-in-sftp"
           title={`Open SFTP Connection (${sshUser})`}
           icon={Icon.Terminal}
-          accessoryTitle={`sftp://${sshUser}@${server.ipAddress}`}
+          accessories={[
+              { text: `sftp://${sshUser}@${server.ipAddress}` }
+          ]}
           actions={
             <ActionPanel>
               <Action.OpenInBrowser
@@ -186,7 +194,9 @@ const SingleServerView = ({
           key="open-in-ploi"
           title="Open in ploi.io"
           icon={Icon.Globe}
-          accessoryTitle="ploi.io"
+          accessories={[
+              { text: "ploi.io" }
+          ]}
           actions={
             <ActionPanel>
               <Action.OpenInBrowser
@@ -200,7 +210,9 @@ const SingleServerView = ({
           key="copy-ip"
           title="Copy IP Address"
           icon={Icon.Clipboard}
-          accessoryTitle={server.ipAddress}
+          accessories={[
+              { text: server.ipAddress }
+          ]}
           actions={
             <ActionPanel>
               <Action.CopyToClipboard
@@ -215,7 +227,9 @@ const SingleServerView = ({
           key="server-id"
           title="Server ID"
           icon={Icon.Document}
-          accessoryTitle={`${server.id}`}
+          accessories={[
+              { text: `${server.id}` }
+          ]}
           actions={
             <ActionPanel>
               <Action.CopyToClipboard content={server.id ?? ""} />
