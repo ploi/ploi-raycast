@@ -44,7 +44,6 @@ export const Server = {
       );
       await showToast(Toast.Style.Success, `Restarting ${label}...`);
     } catch (error) {
-      console.error(error);
       await showToast(Toast.Style.Failure, `Failed to restart ${label}`);
       return;
     }

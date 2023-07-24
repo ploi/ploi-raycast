@@ -63,12 +63,7 @@ export const ServersList = () => {
   if (!servers?.length && !isLoading) {
     return (
       <List>
-        <List.Item
-          title="There are no results to display."
-          accessories={[
-              { text: "If you create your first server in ploi.io, it will show up here." }
-          ]}
-        />
+          <List.EmptyView icon={{ source: "ploi-white.png" }} title="There are no servers" />
       </List>
     );
   }
