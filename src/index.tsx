@@ -20,6 +20,8 @@ axios.defaults.headers.common["Accept"] = headers["Accept"];
 axios.defaults.headers.common["X-Custom-Ploi-Agent"] =
   headers["X-Custom-Ploi-Agent"];
 
-const Ploi = () => <ServersList />;
+const Ploi = () => {
+  return <ServersList />;
+};
 
 export default Ploi;

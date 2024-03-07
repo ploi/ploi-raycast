@@ -26,3 +26,4 @@ declare namespace Arguments {
   /** Arguments passed to the `index` command */
   export type Index = {}
 }
+
